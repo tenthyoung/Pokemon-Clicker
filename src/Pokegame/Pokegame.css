@@ -9,7 +9,8 @@
     margin: 0 auto;
 }
 
-#Pokegame-winner-title {
+#Pokegame-instructions {
     color: white;
     text-align: center;
+    font-size: 1.5rem;
 }

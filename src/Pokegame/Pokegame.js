@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Pokecard from './Pokecard';
+import Pokecard from '../Pokecard/Pokecard';
 import './Pokegame.css';
 
 class Pokegame extends Component {
@@ -14,7 +14,6 @@ class Pokegame extends Component {
             { id: 94, name: 'Gengar', type: 'poison', base_experience: 225 },
             { id: 133, name: 'Eevee', type: 'normal', base_experience: 65 }
         ];
-        const versusImage = 'https://ui-ex.com/images/vs-transparent-versus-1.png';
         const team1 = [];
         const team2 = [];
         let pointDifference = 0;
@@ -60,15 +59,14 @@ class Pokegame extends Component {
             return team1Points > team2Points ? 1 : 2;
         })(shuffledArr);
 
-        console.log(winner);
-        console.table(team1);
-        console.table(team2);
-
         return (
             <div className='Pokegame'>
-                <h1 id='Pokegame-winner-title' className='title'>
-                Don't click on the same Pokémon twice!
-                </h1>
+                <div className='Pokegame-instructions-container'>
+                    <h1 id='Pokegame-instructions' className='title'>
+                        Don't click on the same Pokémon twice!
+                    </h1>
+                </div>
+
                 <div className='Pokegame-team-row'>
                     {team1.map(item =>
                         <Pokecard

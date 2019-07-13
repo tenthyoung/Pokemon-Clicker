@@ -1,0 +1,48 @@
+.Pokecard {
+  /* background: #00adb5;  
+  background: -webkit-linear-gradient(to bottom, #eeeeee, #00adb5);  
+  background: linear-gradient(to bottom, #eeeeee, #00adb5);  */
+  /* background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6eb9fbf0-8d8f-405d-9507-736fc32d8182/d3by5dm-9d692b69-557f-4430-a6e8-ceee30ddf14a.jpg/v1/fill/w_1012,h_790,q_70,strp/stock_anime_grass_by_pyrex_shards_d3by5dm-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9Nzk5IiwicGF0aCI6IlwvZlwvNmViOWZiZjAtOGQ4Zi00MDVkLTk1MDctNzM2ZmMzMmQ4MTgyXC9kM2J5NWRtLTlkNjkyYjY5LTU1N2YtNDQzMC1hNmU4LWNlZWUzMGRkZjE0YS5qcGciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.mD75mqcxn4yj349TRdr6gQtx-f-6Rcu7ZMRqsIpZfEg'); */
+  /* background-size: cover; */
+  background: rgba(255, 255, 255, 0.2);
+  /* background-image: url('https://i.redd.it/b3esnz5ra34y.jpg'); */
+  /* background-size: cover; */
+
+  margin: 30px auto;
+  width: 150px;
+  height: 150px;
+  border-radius: 25px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+
+}
+
+.Pokecard .Pokecard-img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.Pokecard .Pokecard-img img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.Pokecard .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: -80px;
+  height: 40px;
+}
+
+.Pokecard:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+}
