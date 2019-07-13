@@ -1,0 +1,15 @@
+.Pokegame-team-row {
+    display: flex;
+    justify-content: center;
+}
+
+#Pokegame-vs-img {
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+}
+
+#Pokegame-winner-title {
+    color: white;
+    text-align: center;
+}
