@@ -3,90 +3,74 @@ import Pokecard from '../Pokecard/Pokecard';
 import './Pokegame.css';
 
 class Pokegame extends Component {
+    constructor(props) {
+        super(props)
+    
+        this.state = {
+             pokemonArr: [
+                { id: 4, name: 'Charmander', wasClicked: false },
+                { id: 7, name: 'Squirtle', wasClicked: false },
+                { id: 11, name: 'Metapod', wasClicked: false },
+                { id: 12, name: 'Butterfree', wasClicked: false },
+                { id: 25, name: 'Pikachu', wasClicked: false },
+                { id: 39, name: 'Jigglypuff', wasClicked: false },
+                { id: 94, name: 'Gengar', wasClicked: false },
+                { id: 133, name: 'Eevee', wasClicked: false }
+             ],
+             gameStarted: false,
+             score: 0
+        }
+    }
+
+    shuffleArr = array => {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
+        return array;
+    }
+
+    clickHandler = e => {
+        alert('beep boop');
+    }
+    
+
     render() {
-        const pokemonArr = [
-            { id: 4, name: 'Charmander', type: 'fire', base_experience: 62 },
-            { id: 7, name: 'Squirtle', type: 'water', base_experience: 63 },
-            { id: 11, name: 'Metapod', type: 'bug', base_experience: 72 },
-            { id: 12, name: 'Butterfree', type: 'flying', base_experience: 178 },
-            { id: 25, name: 'Pikachu', type: 'electric', base_experience: 112 },
-            { id: 39, name: 'Jigglypuff', type: 'normal', base_experience: 95 },
-            { id: 94, name: 'Gengar', type: 'poison', base_experience: 225 },
-            { id: 133, name: 'Eevee', type: 'normal', base_experience: 65 }
-        ];
-        const team1 = [];
-        const team2 = [];
-        let pointDifference = 0;
+        // We need to shuffle an array of indexes, so that the cards will shuffle on re-render.
+        // So first we need to make an array of indexes that are 
+        //the same length as the pokemonArr, that way we can add more pokemon later on
+        // So if we had 4 pokemon, then indexArr = [0,1,2,3]
+        const indexArr = [];
+        for ( let i = 0; i < this.state.pokemonArr.length; i++ ) {
+            indexArr.push(i);
+        }
 
-        // We need to shuffle the array
-        const shuffledArr = (array => {
-            for (var i = array.length - 1; i > 0; i--) {
-                var j = Math.floor(Math.random() * (i + 1));
-                var temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-            }
-
-            return array;
-        })(pokemonArr);
-
-        console.table(shuffledArr);
-
-        // WARNING: THIS DOESN'T WORK FOR AN ODD NUMBER OF POKENON
-        // WARNING: THIS DOESN'T ACCOUNT FOR A TIE
-        const winner = (array => {
-            let team1Points = 0;
-            let team2Points = 0;
-
-            for (let i = 0; i < array.length / 2; i++) {
-                team1.push(array[i]);
-                team1Points += array[i].base_experience;
-            }
-            console.log('Team 1:', team1Points);
-
-            for (let i = array.length / 2; i < array.length; i++) {
-                team2.push(array[i]);
-                team2Points += array[i].base_experience;
-            }
-            console.log('Team 2:', team2Points);
-
-            pointDifference = team1Points - team2Points;
-            
-            if (pointDifference < 0) {
-                pointDifference *= -1;
-            }
-
-            return team1Points > team2Points ? 1 : 2;
-        })(shuffledArr);
+        // Now we need to shuffle that indexArr
+        const shuffledIndexes = this.shuffleArr(indexArr);
 
         return (
             <div className='Pokegame'>
                 <div className='Pokegame-instructions-container'>
                     <h1 id='Pokegame-instructions' className='title'>
-                        Don't click on the same Pokémon twice!
+                        {this.state.gameStarted ? `Score: ${this.state.score}` : "Don't click on the same Pokémon twice!"}
                     </h1>
                 </div>
+                <div className='Pokegame-row'>
+                    <Pokecard onClick={this.clickHandler} id={this.state.pokemonArr[shuffledIndexes[0]].id} alt={this.state.pokemonArr[shuffledIndexes[0]].name} />
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[1]].id} alt={this.state.pokemonArr[shuffledIndexes[1]].name} />
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[2]].id} alt={this.state.pokemonArr[shuffledIndexes[2]].name} />
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[3]].id} alt={this.state.pokemonArr[shuffledIndexes[3]].name} />
+                </div>
+                <div className='Pokegame-row'>
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[4]].id} alt={this.state.pokemonArr[shuffledIndexes[4]].name} />
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[5]].id} alt={this.state.pokemonArr[shuffledIndexes[5]].name} />
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[6]].id} alt={this.state.pokemonArr[shuffledIndexes[6]].name} />
+                    <Pokecard id={this.state.pokemonArr[shuffledIndexes[7]].id} alt={this.state.pokemonArr[shuffledIndexes[7]].name} />
+                </div>
 
-                <div className='Pokegame-team-row'>
-                    {team1.map(item =>
-                        <Pokecard
-                            id={item.id}
-                            name={item.name}
-                            type={item.type}
-                            base_experience={item.base_experience}
-                        />
-                    )}
-                </div>
-                <div className='Pokegame-team-row'>
-                {team2.map(item => 
-                    <Pokecard 
-                        id={item.id} 
-                        name={item.name} 
-                        type={item.type} 
-                        base_experience={item.base_experience} 
-                    />
-                )}
-                </div>
             </div>
         );
     }

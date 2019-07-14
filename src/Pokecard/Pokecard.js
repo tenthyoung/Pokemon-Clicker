@@ -6,10 +6,6 @@ class Pokecard extends Component {
 
     render() {
         // We need to make things easier to read
-        const props = this.props;
-
-        // We need to uppercase the type b/c it says Type: bug, instead of Type: Bug
-        const upperCase = str => str.charAt(0).toUpperCase() + str.slice(1);
 
         const leftPaddedNum = (num => {
             let paddedNum = '';
@@ -23,12 +19,10 @@ class Pokecard extends Component {
             
             return paddedNum;
         })(this.props.id);
+
         return (
             <div className='Pokecard'>
-                <img className='Pokecard-img' src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${leftPaddedNum}.png`} />
-                {/* <div className='Pokecard-title'>{props.name}</div> */}
-                {/* <p>Type: {upperCase(props.type)} </p>
-                <p>Exp: {props.base_experience} </p> */}
+                <img className='Pokecard-img' src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${leftPaddedNum}.png`} alt={this.props.alt}/>
             </div>
         )
     }
