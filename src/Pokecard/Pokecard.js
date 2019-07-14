@@ -6,7 +6,7 @@ class Pokecard extends Component {
 
     render() {
         // We need to make things easier to read
-
+        
         const leftPaddedNum = (num => {
             let paddedNum = '';
             if (num < 10) {
@@ -22,7 +22,10 @@ class Pokecard extends Component {
 
         return (
             <div className='Pokecard'>
-                <img className='Pokecard-img' src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${leftPaddedNum}.png`} alt={this.props.alt}/>
+                <img className='Pokecard-img' 
+                src={`https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${leftPaddedNum}.png`} 
+                alt={this.props.alt} 
+                />
             </div>
         )
     }
