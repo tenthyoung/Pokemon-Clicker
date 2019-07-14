@@ -32,67 +32,46 @@ class Pokegame extends Component {
         return { score: currentState.score + 1 }
     }
 
-    recordClick_0 = currentState => {
+    recordClick = index => currentState => {
         let newPokemonArr = [...currentState.pokemonArr];
-        newPokemonArr[0].wasClicked = true;
+        newPokemonArr[index].wasClicked = true;
 
         return { pokemonArr: [...newPokemonArr] };
     }
 
     shufflePokemonArr = currentState => {
         let newPokemonArr = [...currentState.pokemonArr];
-        let shuffledArr = this.shuffleArr(newPokemonArr);
-
-        return { pokemonArr: [...shuffledArr]};
-    }
-
-    shuffleArr = array => {
-        for (var i = array.length - 1; i > 0; i--) {
+        for (var i = newPokemonArr.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
-            var temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            var temp = newPokemonArr[i];
+            newPokemonArr[i] = newPokemonArr[j];
+            newPokemonArr[j] = temp;
         }
 
-        return array;
+        return { pokemonArr: [...newPokemonArr]};
     }
 
     startGame = () => {
         this.setState({ gameStarted: true });
     }
 
-    clickHandler_0 = () => {
+    clickHandler = index => e => {
         if (this.state.gameStarted === false) {
             this.startGame();
         }
 
-        if (this.state.pokemonArr[0].wasClicked === false) {
+        this.setState( this.shufflePokemonArr );
+
+
+        if (this.state.pokemonArr[index].wasClicked === false) {
             this.setState(this.incrementScore);
-            this.setState(this.recordClick_0);
+            this.setState(this.recordClick(index));
         } else {
             this.setState(this.gameOver);
         }
     }
 
-    componentDidUpdate() {
-        this.setState( this.shufflePokemonArr );
-    }
-
     render() {
-        console.log(this.state)
-
-        // We need to shuffle an array of indexes, so that the cards will shuffle on re-render.
-        // So first we need to make an array of indexes that are 
-        //the same length as the pokemonArr, that way we can add more pokemon later on
-        // So if we had 4 pokemon, then indexArr = [0,1,2,3]
-        const indexArr = [];
-        for (let i = 0; i < this.state.pokemonArr.length; i++) {
-            indexArr.push(i);
-        }
-
-        // Now we need to shuffle that indexArr
-        const shuffledIndexes = this.shuffleArr(indexArr);
-
         return (
             <div className='Pokegame'>
                 <div className='Pokegame-instructions-container'>
@@ -102,38 +81,14 @@ class Pokegame extends Component {
                     </h1>
                 </div>
                 <div className='Pokegame-row'>
-                    {this.state.pokemonArr.map(item => {
-                        <button className="Pokegame-button" onClick={this.clickHandler_0}>
-                            
-                        </button>
+                    {this.state.pokemonArr.map((item,index) => {
+                        return (
+                            <button className="Pokegame-button" onClick={this.clickHandler(index)}>
+                                <Pokecard id={item.id} alt={item.name} />
+                            </button>
+                        )
                     })}
                     {/* We need to put it in a button b/c onClick doesn't work if you don't */}
-                    <button className="Pokegame-button" onClick={this.clickHandler_0}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[0]].id} alt={this.state.pokemonArr[shuffledIndexes[0]].name} />
-                    </button>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[1]].id} alt={this.state.pokemonArr[shuffledIndexes[1]].name} />
-                    </button>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[2]].id} alt={this.state.pokemonArr[shuffledIndexes[2]].name} />
-                    </button>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[3]].id} alt={this.state.pokemonArr[shuffledIndexes[3]].name} />
-                    </button>
-                </div>
-                <div className='Pokegame-row'>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[4]].id} alt={this.state.pokemonArr[shuffledIndexes[4]].name} />
-                    </button>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[5]].id} alt={this.state.pokemonArr[shuffledIndexes[5]].name} />
-                    </button>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[6]].id} alt={this.state.pokemonArr[shuffledIndexes[6]].name} />
-                    </button>
-                    <button className="Pokegame-button" onClick={this.clickHandler}>
-                        <Pokecard id={this.state.pokemonArr[shuffledIndexes[7]].id} alt={this.state.pokemonArr[shuffledIndexes[7]].name} />
-                    </button>
                 </div>
             </div>
         );
