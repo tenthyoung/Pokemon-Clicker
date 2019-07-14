@@ -23,3 +23,10 @@
     font-size: 1.5rem;
 }
 
+@media only screen and (max-width: 600px) {
+    .Pokegame-row {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+    }
+  }
