@@ -36,6 +36,8 @@ class Pokegame extends Component {
         let newPokemonArr = [...currentState.pokemonArr];
         newPokemonArr[index].wasClicked = true;
 
+        console.log(newPokemonArr[index])
+
         return { pokemonArr: [...newPokemonArr] };
     }
 
@@ -56,19 +58,20 @@ class Pokegame extends Component {
     }
 
     clickHandler = index => e => {
+        console.log('you clicked on this index:', index)
         if (this.state.gameStarted === false) {
             this.startGame();
         }
-
-        this.setState( this.shufflePokemonArr );
-
-
-        if (this.state.pokemonArr[index].wasClicked === false) {
+        
+        if ( this.state.pokemonArr[index].wasClicked === false ) {
             this.setState(this.incrementScore);
             this.setState(this.recordClick(index));
+            this.setState( this.shufflePokemonArr );
         } else {
             this.setState(this.gameOver);
         }
+
+        console.log(this.state.pokemonArr[index])
     }
 
     render() {
@@ -83,7 +86,7 @@ class Pokegame extends Component {
                 <div className='Pokegame-row'>
                     {this.state.pokemonArr.map((item,index) => {
                         return (
-                            <button className="Pokegame-button" onClick={this.clickHandler(index)}>
+                            <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>
                                 <Pokecard id={item.id} alt={item.name} />
                             </button>
                         )
