@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Pokemon-clicker/static/css/main.db31674e.chunk.css",
+    "main.js": "/Pokemon-clicker/static/js/main.bce2cd12.chunk.js",
+    "main.js.map": "/Pokemon-clicker/static/js/main.bce2cd12.chunk.js.map",
+    "runtime~main.js": "/Pokemon-clicker/static/js/runtime~main.9e87ddd9.js",
+    "runtime~main.js.map": "/Pokemon-clicker/static/js/runtime~main.9e87ddd9.js.map",
+    "static/js/2.44949046.chunk.js": "/Pokemon-clicker/static/js/2.44949046.chunk.js",
+    "static/js/2.44949046.chunk.js.map": "/Pokemon-clicker/static/js/2.44949046.chunk.js.map",
+    "index.html": "/Pokemon-clicker/index.html",
+    "precache-manifest.ae147e01fd78fbe3f077af7f904c177e.js": "/Pokemon-clicker/precache-manifest.ae147e01fd78fbe3f077af7f904c177e.js",
+    "service-worker.js": "/Pokemon-clicker/service-worker.js",
+    "static/css/main.db31674e.chunk.css.map": "/Pokemon-clicker/static/css/main.db31674e.chunk.css.map"
+  }
+}
