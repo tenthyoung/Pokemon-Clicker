@@ -16,7 +16,9 @@ class Pokegame extends Component {
                 { id: 25, name: 'Pikachu', wasClicked: false },
                 { id: 39, name: 'Jigglypuff', wasClicked: false },
                 { id: 94, name: 'Gengar', wasClicked: false },
-                { id: 133, name: 'Eevee', wasClicked: false }
+                { id: 133, name: 'Eevee', wasClicked: false },
+                { id: 151, name: 'Mew', wasClicked: false },
+                { id: 54, name: 'Psyduck', wasClicked: false },
             ],
             gameStarted: false,
             score: 0,
@@ -58,7 +60,6 @@ class Pokegame extends Component {
     }
 
     clickHandler = index => e => {
-        console.log('you clicked on this index:', index)
         if (this.state.gameStarted === false) {
             this.startGame();
         }
@@ -71,7 +72,6 @@ class Pokegame extends Component {
             this.setState(this.gameOver);
         }
 
-        console.log(this.state.pokemonArr[index])
     }
 
     render() {
@@ -84,14 +84,22 @@ class Pokegame extends Component {
                     </h1>
                 </div>
                 <div className='Pokegame-row'>
-                    {this.state.pokemonArr.map((item,index) => {
+                    {this.state.pokemonArr.slice(0,4).map((item,index) => {
                         return (
                             <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>
                                 <Pokecard id={item.id} alt={item.name} />
                             </button>
                         )
                     })}
-                    {/* We need to put it in a button b/c onClick doesn't work if you don't */}
+                </div>
+                <div className='Pokegame-row'>
+                    {this.state.pokemonArr.slice(4,8).map((item,index) => {
+                        return (
+                            <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>
+                                <Pokecard id={item.id} alt={item.name} />
+                            </button>
+                        )
+                    })}
                 </div>
             </div>
         );
