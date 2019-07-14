@@ -43,8 +43,28 @@ class Pokegame extends Component {
         return { pokemonArr: [...newPokemonArr] };
     }
 
+    removeClicks = currentState => {
+        let newPokemonArr = [...currentState.pokemonArr];
+
+        for (let i = 0 ; i < newPokemonArr.length ; i++ ) {
+            if (newPokemonArr[i].wasClicked >= 1) {
+                newPokemonArr[i].wasClicked = false;
+            }
+        }
+        console.log("Clicks removed",newPokemonArr);
+
+        return { pokemonArr: [...newPokemonArr ]};
+    }
+
+    replay = () => {
+        this.setState({ gameStarted: false, score: 0, gameOver: false });
+
+        this.setState( this.removeClicks );
+    }
+
     shufflePokemonArr = currentState => {
         let newPokemonArr = [...currentState.pokemonArr];
+
         for (var i = newPokemonArr.length - 1; i > 0; i--) {
             var j = Math.floor(Math.random() * (i + 1));
             var temp = newPokemonArr[i];
@@ -77,13 +97,13 @@ class Pokegame extends Component {
     render() {
         return (
             <div className='Pokegame'>
-                <div className='Pokegame-instructions-container'>
+                <div id='Pokegame-instructions-container'>
                     <h1 id='Pokegame-instructions' className='title'>
                         {this.state.gameOver === true ? "You lose..." : ""}
                         {this.state.gameStarted ? `Score: ${this.state.score}` : "Don't click on the same Pokémon twice!"}
                     </h1>
                 </div>
-                <div className='Pokegame-row'>
+                <div className={`Pokegame-row ${this.state.gameOver ? "is-hidden" : ""}`}>
                     {this.state.pokemonArr.slice(0,4).map((item,index) => {
                         return (
                             <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>
@@ -92,7 +112,12 @@ class Pokegame extends Component {
                         )
                     })}
                 </div>
-                <div className='Pokegame-row'>
+                <div className={`Pokegame-row ${this.state.gameOver? "" : "is-hidden"}`}>
+                    <button className="Pokegame-replay-btn btn-hover color-11" onClick={this.replay}>
+                        Replay
+                    </button>
+                </div>
+                <div className={`Pokegame-row ${this.state.gameOver ? "is-hidden" : ""}`}>
                     {this.state.pokemonArr.slice(4,8).map((item,index) => {
                         return (
                             <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>

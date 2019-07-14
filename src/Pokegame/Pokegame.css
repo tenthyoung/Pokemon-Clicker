@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
+
 .Pokegame-button {
     border: none;
     height: 0px;
     margin: 30px auto;
     outline:0;
+}
+
+.Pokegame-replay-button {
+    
 }
 
 .Pokegame-row {
@@ -18,10 +24,60 @@
 }
 
 #Pokegame-instructions {
+    font-family: 'Work Sans', sans-serif;
     color: white;
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
     text-align: center;
     font-size: 1.5rem;
 }
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.buttons {
+    margin: 10%;
+    text-align: center;
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-11 {
+       background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
+
+
 
 @media only screen and (max-width: 600px) {
     .Pokegame-row {
