@@ -1,13 +1,12 @@
 .Pokecard {
   background: rgba(255, 255, 255, 0.2);
-
   width: 150px;
   height: 150px;
   border-radius: 25px;
   box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
   cursor: pointer;
   transition: 0.4s;
-
+  margin: 0 10px;
 }
 
 .Pokecard .Pokecard-img {
@@ -43,5 +42,6 @@
   .Pokecard {
     width: 110px;
     height: 110px;
+    margin: 0 5px;
   }
 }

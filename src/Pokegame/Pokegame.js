@@ -35,10 +35,10 @@ class Pokegame extends Component {
     }
 
     recordClick = index => currentState => {
+        console.log("Index (recordClick):" + index)
+        console.log("current state:" + currentState)
         let newPokemonArr = [...currentState.pokemonArr];
         newPokemonArr[index].wasClicked = true;
-
-        console.log(newPokemonArr[index])
 
         return { pokemonArr: [...newPokemonArr] };
     }
@@ -80,6 +80,7 @@ class Pokegame extends Component {
     }
 
     clickHandler = index => e => {
+        console.log("Index:" + index)
         if (this.state.gameStarted === false) {
             this.startGame();
         }
@@ -99,11 +100,12 @@ class Pokegame extends Component {
             <div className='Pokegame'>
                 <div id='Pokegame-instructions-container'>
                     <h1 id='Pokegame-instructions' className='title'>
-                        {this.state.gameOver === true ? "You lose..." : ""}
+                        {this.state.gameOver === true && this.state.score != 10 ? "You lose..." : ""}
+                        {this.state.score === 10 ? "You Win!" : ""}
                         {this.state.gameStarted ? `Score: ${this.state.score}` : "Don't click on the same Pokémon twice!"}
                     </h1>
                 </div>
-                <div className={`Pokegame-row ${this.state.gameOver ? "is-hidden" : ""}`}>
+                <div className={`Pokegame-row ${this.state.gameOver || this.state.score === 10 ? "is-hidden" : ""}`}>
                     {this.state.pokemonArr.slice(0,4).map((item,index) => {
                         return (
                             <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>
@@ -112,15 +114,15 @@ class Pokegame extends Component {
                         )
                     })}
                 </div>
-                <div className={`Pokegame-row ${this.state.gameOver? "" : "is-hidden"}`}>
+                <div className={`Pokegame-row ${this.state.gameOver || this.state.score === 10 ? "" : "is-hidden"}`}>
                     <button className="Pokegame-replay-btn btn-hover color-11" onClick={this.replay}>
                         Replay
                     </button>
                 </div>
-                <div className={`Pokegame-row ${this.state.gameOver ? "is-hidden" : ""}`}>
+                <div className={`Pokegame-row ${this.state.gameOver || this.state.score === 10 ? "is-hidden" : ""}`}>
                     {this.state.pokemonArr.slice(4,8).map((item,index) => {
                         return (
-                            <button className="Pokegame-button" key={index} onClick={this.clickHandler(index)}>
+                            <button className="Pokegame-button" key={index+4} onClick={this.clickHandler(index+4)}>
                                 <Pokecard id={item.id} alt={item.name} />
                             </button>
                         )

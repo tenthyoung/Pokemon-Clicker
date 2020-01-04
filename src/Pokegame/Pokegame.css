@@ -1,14 +1,17 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans&display=swap');
 
+.Pokegame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .Pokegame-button {
     border: none;
     height: 0px;
     margin: 30px auto;
     outline:0;
-}
-
-.Pokegame-replay-button {
-    
 }
 
 .Pokegame-row {
@@ -84,5 +87,8 @@
         display: flex;
         justify-content: center;
         margin-bottom: 100px;
+    }
+    #Pokegame-instructions {
+        font-size: 1.25rem;
     }
   }
