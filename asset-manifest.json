@@ -1,15 +1,22 @@
 {
   "files": {
-    "main.css": "/Pokemon-Clicker/static/css/main.db31674e.chunk.css",
-    "main.js": "/Pokemon-Clicker/static/js/main.477e8638.chunk.js",
-    "main.js.map": "/Pokemon-Clicker/static/js/main.477e8638.chunk.js.map",
-    "runtime~main.js": "/Pokemon-Clicker/static/js/runtime~main.b191a787.js",
-    "runtime~main.js.map": "/Pokemon-Clicker/static/js/runtime~main.b191a787.js.map",
-    "static/js/2.44949046.chunk.js": "/Pokemon-Clicker/static/js/2.44949046.chunk.js",
-    "static/js/2.44949046.chunk.js.map": "/Pokemon-Clicker/static/js/2.44949046.chunk.js.map",
+    "main.css": "/Pokemon-Clicker/static/css/main.2147177a.chunk.css",
+    "main.js": "/Pokemon-Clicker/static/js/main.37a6971b.chunk.js",
+    "main.js.map": "/Pokemon-Clicker/static/js/main.37a6971b.chunk.js.map",
+    "runtime-main.js": "/Pokemon-Clicker/static/js/runtime-main.cab83688.js",
+    "runtime-main.js.map": "/Pokemon-Clicker/static/js/runtime-main.cab83688.js.map",
+    "static/js/2.7c353b93.chunk.js": "/Pokemon-Clicker/static/js/2.7c353b93.chunk.js",
+    "static/js/2.7c353b93.chunk.js.map": "/Pokemon-Clicker/static/js/2.7c353b93.chunk.js.map",
     "index.html": "/Pokemon-Clicker/index.html",
-    "precache-manifest.831b0ad9af2062454620294508d34571.js": "/Pokemon-Clicker/precache-manifest.831b0ad9af2062454620294508d34571.js",
+    "precache-manifest.13e221b5cf1590c2fac96264a03c15e4.js": "/Pokemon-Clicker/precache-manifest.13e221b5cf1590c2fac96264a03c15e4.js",
     "service-worker.js": "/Pokemon-Clicker/service-worker.js",
-    "static/css/main.db31674e.chunk.css.map": "/Pokemon-Clicker/static/css/main.db31674e.chunk.css.map"
-  }
+    "static/css/main.2147177a.chunk.css.map": "/Pokemon-Clicker/static/css/main.2147177a.chunk.css.map",
+    "static/js/2.7c353b93.chunk.js.LICENSE": "/Pokemon-Clicker/static/js/2.7c353b93.chunk.js.LICENSE"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cab83688.js",
+    "static/js/2.7c353b93.chunk.js",
+    "static/css/main.2147177a.chunk.css",
+    "static/js/main.37a6971b.chunk.js"
+  ]
 }
